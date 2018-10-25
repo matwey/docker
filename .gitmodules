@@ -1,0 +1,3 @@
+[submodule "modules.d/95noroot"]
+	path = modules.d/95noroot
+	url = https://github.com/matwey/dracut-noroot.git

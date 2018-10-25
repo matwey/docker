@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -e
+set -x
+
+KERNEL_VERSION=$1
+BOOTIMAGE=$2
+MAPFILE=$3
+
+INSTALL_PATH=/boot
+CONFIGFILE=config-$KERNEL_VERSION
+
+echo "Installing $KERNEL_VERSION"
+
+case "$(uname -m)" in
+	s390|s390x)
+		BOOTFILE=image
+	;;
+	ppc|ppc64)
+		BOOTFILE=vmlinux
+	;;
+	aarch64)
+		BOOTFILE=Image
+	;;
+	armv*)
+		BOOTFILE=zImage
+	;;
+	*)
+		BOOTFILE=vmlinuz
+	;;
+esac
+
+install -m 0644 $BOOTIMAGE $INSTALL_PATH/$BOOTFILE-$KERNEL_VERSION
+ln -sf ./$BOOTFILE-$KERNEL_VERSION $INSTALL_PATH/$BOOTFILE
+
+install -m 0644 $MAPFILE $INSTALL_PATH/System.map-$KERNEL_VERSION
+ln -sf ./System.map-$KERNEL_VERSION $INSTALL_PATH/System.map
+
+[ -f .config ] && install -m 0644 .config $INSTALL_PATH/$CONFIGFILE
+
+/sbin/depmod $KERNEL_VERSION
+
+/usr/bin/dracut --hostonly --force $INSTALL_PATH/initrd-$KERNEL_VERSION $KERNEL_VERSION \
+	&& chmod 0644 $INSTALL_PATH/initrd-$KERNEL_VERSION
+ln -sf ./initrd-$KERNEL_VERSION $INSTALL_PATH/initrd
