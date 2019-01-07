@@ -8,7 +8,7 @@ make -C /usr/src/linux install
 
 case "$(uname -m)" in
 	armv*)
-		install -m 0755 /usr/local/lib64/grub.efi /boot/bootarm.efi
+		install -m 0755 /usr/local/lib/grub.efi /boot/bootarm.efi
 	;;
 	aarch64)
 		install -m 0755 /usr/local/lib64/grub.efi /boot/bootaa64.efi

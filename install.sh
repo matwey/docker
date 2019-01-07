@@ -6,6 +6,11 @@ set -x
 zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution btrfsprogs gcc iproute2 iputils hostname kmod kmod-compat libelf-devel make wicked
 
 case "$(uname -m)" in
+	armv*)
+		zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution grub2-arm-efi
+
+		grub2-mkimage -O arm-efi -o /usr/local/lib/grub.efi --prefix= echo efi_gop efinet http linux net normal serial tftp
+	;;
 	aarch64)
 		zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution grub2-arm64-efi
 
