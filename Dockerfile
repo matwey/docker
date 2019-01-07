@@ -1,4 +1,5 @@
-FROM opensuse/leap
+ARG BASEIMAGE=opensuse/leap
+FROM $BASEIMAGE
 MAINTAINER Matwey V. Kornilov <matwey.kornilov@gmail.com>
 
 ENV KBUILD_OUTPUT=/build
