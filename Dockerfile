@@ -1,4 +1,8 @@
-FROM registry.opensuse.org/virtualization/containers/images/opensuse-leap-15.0/containers_ports/opensuse-leap-15.0:current
+#
+# docker build --platform linux/arm64 --build-arg BASEIMAGE=registry.opensuse.org/virtualization/containers/images/opensuse-leap-15.0/containers_ports/opensuse-leap-15.0:current --no-cache .
+#
+ARG BASEIMAGE=opensuse/leap
+FROM $BASEIMAGE
 MAINTAINER Matwey V. Kornilov <matwey.kornilov@gmail.com>
 
 ENV KBUILD_OUTPUT=/build
