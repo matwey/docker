@@ -18,5 +18,7 @@ COPY run.sh /usr/local/bin
 RUN /usr/local/bin/install.sh
 
 COPY dracut.conf.d/90-network.conf /usr/lib/dracut/dracut.conf.d
+COPY dracut.conf.d/90-rescue.conf /usr/lib/dracut/dracut.conf.d
 COPY dracut.conf.d/95-noroot.conf /usr/lib/dracut/dracut.conf.d
+COPY dracut.conf.d/95-ssh-client.conf /usr/lib/dracut/dracut.conf.d
 COPY modules.d/95noroot /usr/lib/dracut/modules.d/95noroot
