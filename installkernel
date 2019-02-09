@@ -43,3 +43,7 @@ ln -sf ./System.map-$KERNEL_VERSION $INSTALL_PATH/System.map
 /usr/bin/dracut --hostonly --force $INSTALL_PATH/initrd-$KERNEL_VERSION $KERNEL_VERSION \
 	&& chmod 0644 $INSTALL_PATH/initrd-$KERNEL_VERSION
 ln -sf ./initrd-$KERNEL_VERSION $INSTALL_PATH/initrd
+
+if [ -d "$INSTALL_PATH/dtbs/$KERNEL_VERSION" ] ; then
+	ln -sfn ./dtbs/$KERNEL_VERSION $INSTALL_PATH/dtb
+fi

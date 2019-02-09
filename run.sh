@@ -7,10 +7,12 @@ make -C /usr/src/linux modules_install
 
 case "$(uname -m)" in
 	armv*)
+		make -C /usr/src/linux dtbs_install
 		make -C /usr/src/linux zinstall
 		install -m 0755 /usr/local/lib/grub.efi /boot/bootarm.efi
 	;;
 	aarch64)
+		make -C /usr/src/linux dtbs_install
 		make -C /usr/src/linux install
 		install -m 0755 /usr/local/lib64/grub.efi /boot/bootaa64.efi
 	;;
