@@ -11,5 +11,5 @@ git clone --depth 1 --branch atf-v1.5-armada-18.12 https://github.com/MarvellEmb
 git clone --depth 1 --branch u-boot-2018.03-armada-18.12 https://github.com/MarvellEmbeddedProcessors/u-boot-marvell.git u-boot
 git clone --depth 1 --branch mv_ddr-armada-18.12 https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell.git mv-ddr
 git clone --depth 1 --branch A3700_utils-armada-18.12 https://github.com/MarvellEmbeddedProcessors/A3700-utils-marvell.git A3700-utils
-git clone --depth 1 --branch uefi-2.7-armada-18.12 https://github.com/MarvellEmbeddedProcessors/uefi-marvell.git edk2
+git clone --depth 1 --branch uefi-espressobin https://github.com/matwey/uefi-marvell.git edk2
 popd

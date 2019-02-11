@@ -6,7 +6,7 @@ set -x
 FIRMWARE=$1
 
 if [ "x$FIRMWARE" == "xtianocore" ] ; then
-	export BL33=/Build/Armada37x0Db-AARCH64/RELEASE_GCC5/FV/ARMADA_EFI.fd
+	export BL33=/Build/Armada37x0Db-AARCH64/DEBUG_GCC5/FV/ARMADA_EFI.fd
 else
 	export BL33=/build/u-boot.bin
 fi
@@ -20,7 +20,7 @@ if [ "x$FIRMWARE" == "xtianocore" ] ; then
 	set --
 	source /usr/src/edk2/edksetup.sh
 	make -C /usr/src/edk2/BaseTools
-	build -b RELEASE -a AARCH64 -t GCC5 -p Platform/Marvell/Armada37x0Db/Armada37x0Db.dsc
+	build -b DEBUG -a AARCH64 -t GCC5 -p Platform/Marvell/Armada37x0Db/Armada37x0Db.dsc
 else
 	make -C /usr/src/u-boot mvebu_espressobin-88f3720_defconfig
 	make -C /usr/src/u-boot DEVICE_TREE=armada-3720-espressobin PLATFORM_LIBGCC=/usr/local/lib/libgcc.a
