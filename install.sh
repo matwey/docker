@@ -12,10 +12,11 @@ cd ClickHouse
 mkdir build
 
 pushd build
-CC=gcc-8 CXX=g++-8 cmake .. -DCMAKE_BUILD_TYPE=Release
+export CC=gcc-8
+export CXX=g++-8
+cmake .. -DCMAKE_BUILD_TYPE=Release
 ninja
-ninja test
-cmake --install
+ninja install
 popd
 
 popd
