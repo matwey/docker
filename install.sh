@@ -3,7 +3,7 @@
 set -e
 set -x
 
-zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution git gcc8-c++ ninja cmake
+zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution git gcc8-c++ ninja cmake readline-devel
 
 pushd /usr/src
 
@@ -14,9 +14,10 @@ mkdir build
 pushd build
 export CC=gcc-8
 export CXX=g++-8
-cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_READLINE:BOOL=ON
 ninja
 ninja install
+
 popd
 
 popd
