@@ -18,4 +18,4 @@ jobs:
         docker buildx create --name xbuilder --use
         docker buildx inspect --bootstrap
     - name: Build the Docker image
-      run: docker buildx build --platform linux/arm/v7,linux/arm64,linux/amd64 -t docker.pkg.github.com/${{ github.repository }}/opensuse-salt:latest --push .
+      run: docker buildx build --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:latest --push .
