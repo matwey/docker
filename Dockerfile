@@ -1,4 +1,4 @@
-FROM registry.opensuse.org/opensuse/leap:15
+FROM registry.opensuse.org/opensuse/leap:15.2
 MAINTAINER Matwey V. Kornilov <matwey.kornilov@gmail.com>
 
 # The following required for systemd to reliably detect the container 
