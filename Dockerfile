@@ -10,4 +10,4 @@ RUN sed -i -e '1s/^/auth sufficient pam_listfile.so item=tty sense=allow file=\/
 RUN echo console >> /etc/securetty
 
 VOLUME ["/srv/salt"]
-ENTRYPOINT ["/bin/systemd","--system"]
+ENTRYPOINT ["/usr/lib/systemd/systemd", "--system"]
