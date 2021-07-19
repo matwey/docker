@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on: push
+
+jobs:
+<%= for x <- jobs do %>
+<% tag = x |> String.replace("/", "-") |> String.replace(".", "") %>
+  <%= tag %>:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:<%= tag %> <%= x %>
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:<%= tag %>
+<% end %>
