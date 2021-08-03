@@ -1,0 +1,276 @@
+name: Docker Image CI
+
+on: push
+
+jobs:
+
+
+  gcc7-qt512:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc7-qt512 gcc7/qt512
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc7-qt512
+
+
+  gcc7-qt515:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc7-qt515 gcc7/qt515
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc7-qt515
+
+
+  gcc7-qt60:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc7-qt60 gcc7/qt60
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc7-qt60
+
+
+  gcc9-qt512:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc9-qt512 gcc9/qt512
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc9-qt512
+
+
+  gcc9-qt515:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc9-qt515 gcc9/qt515
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc9-qt515
+
+
+  gcc9-qt60:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc9-qt60 gcc9/qt60
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc9-qt60
+
+
+  gcc10-qt512:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc10-qt512 gcc10/qt512
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc10-qt512
+
+
+  gcc10-qt515:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc10-qt515 gcc10/qt515
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc10-qt515
+
+
+  gcc10-qt60:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc10-qt60 gcc10/qt60
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc10-qt60
+
+
+  gcc11-qt512:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc11-qt512 gcc11/qt512
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc11-qt512
+
+
+  gcc11-qt515:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc11-qt515 gcc11/qt515
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc11-qt515
+
+
+  gcc11-qt60:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:gcc11-qt60 gcc11/qt60
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:gcc11-qt60
+
+
+  clang7-qt512:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:clang7-qt512 clang7/qt512
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:clang7-qt512
+
+
+  clang7-qt515:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:clang7-qt515 clang7/qt515
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:clang7-qt515
+
+
+  clang7-qt60:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:clang7-qt60 clang7/qt60
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:clang7-qt60
+
+
+  clang9-qt512:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:clang9-qt512 clang9/qt512
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:clang9-qt512
+
+
+  clang9-qt515:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:clang9-qt515 clang9/qt515
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:clang9-qt515
+
+
+  clang9-qt60:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to registry
+      run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/${{ github.repository }}/opensuse-ci:clang9-qt60 clang9/qt60
+    - name: Deploy the image to the registry
+      run: docker push ghcr.io/${{ github.repository }}/opensuse-ci:clang9-qt60
+
