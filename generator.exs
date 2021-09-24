@@ -34,7 +34,7 @@ defmodule Generator do
 		"libQt5Widgets-devel libQt5Test-devel libQt5Gui-devel libQt5Core-devel"
 	end
 	defp package({:qt, {6, _qt_minor}}) do
-		"qt6-widgets-devel qt6-test-devel qt6-gui-devel qt6-core-devel"
+		"qt6-widgets-devel qt6-test-devel qt6-gui-devel qt6-core-devel qt6-openglwidgets-devel qt6-opengl-devel qt6-base-devel"
 	end
 
 	defp variables({:gcc, gcc_version}) do
