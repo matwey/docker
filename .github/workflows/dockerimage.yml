@@ -17,5 +17,9 @@ jobs:
         chmod a+x ~/.docker/cli-plugins/docker-buildx
         docker buildx create --name xbuilder --use
         docker buildx inspect --bootstrap
-    - name: Build the Docker image
-      run: docker buildx build --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:latest --push .
+    - name: Build the Docker image for openSUSE Leap 15.2
+      run: docker buildx build --build-arg VERSION=leap:15.2 --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:15.2 --push .
+    - name: Build the Docker image for openSUSE Leap 15.3
+      run: docker buildx build --build-arg VERSION=leap:15.3 --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:15.3 --push .
+    - name: Build the Docker image for openSUSE Tumbleweed
+      run: docker buildx build --build-arg VERSION=tumbleweed --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:latest --push .
