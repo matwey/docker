@@ -4,6 +4,19 @@ on: [push]
 
 jobs:
   build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - version: leap:15.2
+            tag: 15.2
+          - version: leap:15.3
+            tag: 15.3
+          - version: leap:15.4
+            tag: 15.4
+          - version: tumbleweed
+            tag: latest
+
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -17,11 +30,5 @@ jobs:
         chmod a+x ~/.docker/cli-plugins/docker-buildx
         docker buildx create --name xbuilder --use
         docker buildx inspect --bootstrap
-    - name: Build the Docker image for openSUSE Leap 15.2
-      run: docker buildx build --build-arg VERSION=leap:15.2 --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:15.2 --push .
-    - name: Build the Docker image for openSUSE Leap 15.3
-      run: docker buildx build --build-arg VERSION=leap:15.3 --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:15.3 --push .
-    - name: Build the Docker image for openSUSE Leap 15.4
-      run: docker buildx build --build-arg VERSION=leap:15.4 --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:15.4 --push .
-    - name: Build the Docker image for openSUSE Tumbleweed
-      run: docker buildx build --build-arg VERSION=tumbleweed --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:latest --push .
+    - name: Build the Docker image for ${{ matrix.tag }}
+      run: docker buildx build --build-arg VERSION=${{ matrix.version }} --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:${{ matrix.tag }} --push .
