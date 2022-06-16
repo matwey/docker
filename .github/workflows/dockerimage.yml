@@ -21,5 +21,7 @@ jobs:
       run: docker buildx build --build-arg VERSION=leap:15.2 --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:15.2 --push .
     - name: Build the Docker image for openSUSE Leap 15.3
       run: docker buildx build --build-arg VERSION=leap:15.3 --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:15.3 --push .
+    - name: Build the Docker image for openSUSE Leap 15.4
+      run: docker buildx build --build-arg VERSION=leap:15.4 --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:15.4 --push .
     - name: Build the Docker image for openSUSE Tumbleweed
       run: docker buildx build --build-arg VERSION=tumbleweed --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-salt:latest --push .
