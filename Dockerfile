@@ -1,4 +1,4 @@
-FROM registry.opensuse.org/opensuse/leap:15.2
+FROM registry.opensuse.org/opensuse/leap:15.4
 MAINTAINER Matwey V. Kornilov <matwey.kornilov@gmail.com>
 
 ENV KBUILD_OUTPUT=/build
