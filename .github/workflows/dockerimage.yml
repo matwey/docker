@@ -1,23 +1,45 @@
 name: Docker Image CI
 
-on: [push]
+on:
+  push:
+  schedule:
+  - cron: '0 0 1 * *'
+
+env:
+  BUILDX_VERSION: 0.9.1
+  BINFMT_VERSION: bebbae0c1100ebf7bf2ad4dfb9dfd719cf0ef132
 
 jobs:
   build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - version: leap:15.4
+            tag: latest
+
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-      with:
-        submodules: recursive
     - name: Login to registry
       run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+    - name: Start binfmt
+      run: docker run --rm --privileged linuxkit/binfmt:${BINFMT_VERSION}
+    - name: Cache buildx plugin
+      id: cache-buildx
+      uses: actions/cache@v3
+      with:
+        path: ~/.docker/cli-plugins/docker-buildx
+        key: buildx-${{ env.BUILDX_VERSION }}
     - name: Setup buildx plugin
+      if: steps.cache-buildx.outputs.cache-hit != 'true'
       run: |
-        docker run --rm --privileged docker/binfmt:820fdd95a9972a5308930a2bdfb8573dd4447ad3
         mkdir -p ~/.docker/cli-plugins/
-        wget https://github.com/docker/buildx/releases/download/v0.5.1/buildx-v0.5.1.linux-amd64 -O ~/.docker/cli-plugins/docker-buildx
+        wget https://github.com/docker/buildx/releases/download/v${BUILDX_VERSION}/buildx-v${BUILDX_VERSION}.linux-amd64 -O ~/.docker/cli-plugins/docker-buildx
         chmod a+x ~/.docker/cli-plugins/docker-buildx
+    - name: Start xbuilder
+      run: |
         docker buildx create --name xbuilder --use
         docker buildx inspect --bootstrap
-    - name: Build the Docker image
-      run: docker buildx build --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-kernel-deploy:latest --push .
+    - name: Build the Docker image for ${{ matrix.tag }}
+      run: docker buildx build --build-arg VERSION=${{ matrix.version }} --platform linux/arm/v7,linux/arm64,linux/amd64 -t ghcr.io/${{ github.repository }}/opensuse-kernel-deploy:${{ matrix.tag }} --push .

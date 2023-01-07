@@ -1,4 +1,5 @@
-FROM registry.opensuse.org/opensuse/leap:15.4
+ARG VERSION=leap:15.4
+FROM registry.opensuse.org/opensuse/${VERSION}
 MAINTAINER Matwey V. Kornilov <matwey.kornilov@gmail.com>
 
 ENV KBUILD_OUTPUT=/build
