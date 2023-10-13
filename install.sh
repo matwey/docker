@@ -3,7 +3,7 @@
 set -e
 set -x
 
-zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution btrfsprogs gcc dracut iproute2 iputils hostname kmod kmod-compat libelf-devel make openssh wicked
+zypper -n --gpg-auto-import-keys install --no-recommends --auto-agree-with-licenses --force-resolution btrfsprogs gcc dracut iproute2 iputils hostname kmod kmod-compat libelf-devel make openssh wicked systemd-network
 
 case "$(uname -m)" in
 	armv*)
